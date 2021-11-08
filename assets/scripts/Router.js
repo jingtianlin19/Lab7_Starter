@@ -48,7 +48,7 @@ export class Router {
    * @param {Boolean} statePopped True if this function is being called from a
    *                              'popstate' event instead of a normal card click
    */
-  navigate(page, statePopped) {
+   navigate(page, statePopped) {
     console.log(`navigate() function called, requested page: ${page}`);
     /**
      * TODO - Part 1 - Step 4
@@ -66,5 +66,19 @@ export class Router {
      *     and URL + hash to history
      *  4. Finally, call the stored function for the given page
      */
+    if (this[page] == undefined) {
+      console.error('page not found');
+      return;
+    }
+    else {
+      var hash = '';
+      if (page != 'home') {
+        hash = '#' + page;
+      }
+    }
+    if (statePopped == false && window.location.hash != hash) {
+      history.pushState(page, '', window.location + hash);
+    }
+    this[page]();
   }
 }
