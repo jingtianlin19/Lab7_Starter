@@ -171,7 +171,7 @@ function bindEscKey() {
    * page. This will let us go back to the home page from the detailed page.
    */
    document.addEventListener('keydown', (e) => {
-    if (e.key == 'escape') {
+    if (e.key == 'Escape') {
       router.navigate('home');}
     })
 }
